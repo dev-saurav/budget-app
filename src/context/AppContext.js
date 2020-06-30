@@ -1,0 +1,15 @@
+import React, { useState, useReducer, createContext, useEffect } from "react";
+import { Reducer } from './AppReducer';
+import { getLocalStroage } from '../utils/utilFunc'
+
+export const AppContext = createContext()
+
+export const AppContextProvider = (props) => {
+    const [state, dispatch] = useReducer(Reducer, getLocalStroage());
+
+    return (
+        <AppContext.Provider value={{ state, dispatch }}>
+            {props.children}
+        </AppContext.Provider>
+    )
+}

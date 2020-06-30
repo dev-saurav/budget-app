@@ -1,25 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-
+import Header from './components/Header';
+import Balance from './components/Balance';
+import IncomeExpenses from './components/IncomeExpenses';
+import AddIncomeForm from './components/AddIncomeExpanses';
+import TransactionList from './components/TransactionList';
+import { AppContextProvider } from './context/AppContext';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppContextProvider>
+      <div className="container">
+        <div className="app-container">
+          <div className="column">
+            <Header />
+            <Balance />
+            <IncomeExpenses />
+          </div>
+          <div className="column">
+            <AddIncomeForm type={"income"} />
+            <TransactionList type={"income"} />
+          </div>
+          <div className="column">
+            <AddIncomeForm type={"expense"} />
+            <TransactionList type={"expense"} />
+          </div>
+        </div>
+      </div>
+    </AppContextProvider>
   );
 }
 
